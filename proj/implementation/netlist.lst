@@ -1,0 +1,20 @@
+C:\Users\CS152B\Documents\new\proj\implementation\system.ngc 1402084586
+C:/Users/CS152B/Documents/new/proj/implementation/system_microblaze_0_wrapper.ngc 1402084364
+C:/Users/CS152B/Documents/new/proj/implementation/system_mb_plb_wrapper.ngc 1402083936
+C:/Users/CS152B/Documents/new/proj/implementation/system_ilmb_wrapper.ngc 1402084368
+C:/Users/CS152B/Documents/new/proj/implementation/system_dlmb_wrapper.ngc 1402084373
+C:/Users/CS152B/Documents/new/proj/implementation/system_dlmb_cntlr_wrapper.ngc 1402083955
+C:/Users/CS152B/Documents/new/proj/implementation/system_ilmb_cntlr_wrapper.ngc 1402083961
+C:/Users/CS152B/Documents/new/proj/implementation/system_lmb_bram_wrapper.ngc 1402083974
+C:/Users/CS152B/Documents/new/proj/implementation/system_rs232_uart_0_wrapper.ngc 1402083993
+C:/Users/CS152B/Documents/new/proj/implementation/system_ddr2_sdram_wrapper.ngc 1402084377
+C:/Users/CS152B/Documents/new/proj/implementation/system_clock_generator_0_wrapper.ngc 1402084382
+C:/Users/CS152B/Documents/new/proj/implementation/system_mdm_0_wrapper.ngc 1402084161
+C:/Users/CS152B/Documents/new/proj/implementation/system_proc_sys_reset_0_wrapper.ngc 1402084168
+C:/Users/CS152B/Documents/new/proj/implementation/system_dvma_0_wrapper.ngc 1402084221
+C:/Users/CS152B/Documents/new/proj/implementation/system_hdmi_0_wrapper.ngc 1402084252
+C:/Users/CS152B/Documents/new/proj/implementation/system_cam_ctrl_0_wrapper.ngc 1402084279
+C:/Users/CS152B/Documents/new/proj/implementation/system_cam_ctrl_1_wrapper.ngc 1402084305
+C:/Users/CS152B/Documents/new/proj/implementation/system_cam_iic_0_wrapper.ngc 1402084332
+C:/Users/CS152B/Documents/new/proj/implementation/system_cam_iic_1_wrapper.ngc 1402084359
+OK

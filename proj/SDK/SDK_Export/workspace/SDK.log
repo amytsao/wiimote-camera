@@ -1,0 +1,46 @@
+13:05:50.504 INFO  - Processing command line option -hwspec C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\hw\system.xml. 
+13:07:29.343 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+13:07:48.839 INFO  - FPGA configured successfully with bitstream "C:/Users/CS152B/Documents/new/proj/SDK/SDK_Export/workspace/proj_hw_platform/download.bit" 
+13:12:52.345 INFO  - Successfully generated C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\Test\link.ld. 
+13:12:52.347 INFO  - Applying linker script to all configurations of project Test. 
+13:12:52.351 INFO  - Setting rebuild state to true for all configurations of project Test. 
+13:14:13.994 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:17:12.673 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:19:16.602 ERROR - Unexpected error while launching program. java.lang.RuntimeException: The program file specified in the launch configuration does not exist
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runApplication(Unknown Source)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(Unknown Source)
+
+13:21:51.912 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:22:01.013 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:22:04.513 ERROR - Unexpected error while launching program. java.lang.RuntimeException: No Active System
+
+	at com.xilinx.sdk.targetmanager.internal.TM.stop(Unknown Source)
+	at com.xilinx.sdk.targetmanager.internal.CPURunSession.terminate(Unknown Source)
+
+13:22:15.678 WARN  - Terminating existing sessions on processor microblaze_0 
+13:22:26.781 WARN  - Terminating existing sessions on processor microblaze_0 
+13:22:33.171 WARN  - Terminating existing sessions on processor microblaze_0 
+13:25:15.942 WARN  - Terminating existing sessions on processor microblaze_0 
+13:25:25.488 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+13:29:04.194 INFO  - FPGA configured successfully with bitstream "C:/Users/CS152B/Documents/new/proj/SDK/SDK_Export/workspace/proj_hw_platform/download.bit" 
+13:29:55.305 INFO  - FPGA configured successfully with bitstream "C:/Users/CS152B/Documents/new/proj/SDK/SDK_Export/workspace/proj_hw_platform/download.bit" 
+13:31:06.845 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:38:10.452 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:38:15.452 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:45:07.772 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:50:42.289 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+13:56:40.763 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+14:03:41.486 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+14:10:50.312 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+14:11:21.362 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+14:17:00.125 INFO  - FPGA configured successfully with bitstream "C:/Users/CS152B/Documents/new/proj/SDK/SDK_Export/workspace/proj_hw_platform/download.bit" 
+14:41:17.080 ERROR - Unexpected error while fetching XMD's response:  java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at sun.nio.cs.StreamDecoder.readBytes(Unknown Source)
+
+14:41:17.090 ERROR - Zero sized response read from XMD. This indicates a communication error or a programming error. 

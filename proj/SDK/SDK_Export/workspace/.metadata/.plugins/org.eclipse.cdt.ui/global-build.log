@@ -1,0 +1,402 @@
+13:21:27 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+../main.c: In function 'main':
+../main.c:201:12: warning: unused variable 'posY' [-Wunused-variable]
+../main.c:201:6: warning: unused variable 'posX' [-Wunused-variable]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21441	    280	   2087	  23808	   5d00	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 14.6 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+13:21:51 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+../main.c: In function 'main':
+../main.c:228:4: error: 'FRAME_OFFSET' undeclared (first use in this function)
+../main.c:228:4: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [main.o] Error 1
+13:21:58 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21597	    280	   2080	  23957	   5d95	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 14.6 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+13:25:08 **** Incremental Build of configuration Debug for project Test ****
+make all 
+make: Nothing to be done for `all'.
+13:29:05 **** Auto Build of project standalone_bsp_0 ****
+make -k all 
+'Finished building libraries'
+13:29:56 **** Auto Build of project standalone_bsp_0 ****
+make -k all 
+'Finished building libraries'
+13:29:59 **** Incremental Build of configuration Debug for project Test ****
+make all 
+make: Nothing to be done for `all'.
+13:31:04 **** Clean-only build of configuration Debug for project Test ****
+make clean 
+rm -rf  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o  ./cam_ctrl.d ./main.d ./vmodcam_cfg.d  Test.elf.size  Test.elf.elfcheck  Test.elf
+' '
+13:31:04 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../cam_ctrl.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"cam_ctrl.d" -MT"cam_ctrl.d" -o "cam_ctrl.o" "../cam_ctrl.c"
+../cam_ctrl.c: In function 'CamStatus':
+../cam_ctrl.c:124:1: warning: control reaches end of non-void function [-Wreturn-type]
+'Finished building: ../cam_ctrl.c'
+' '
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+'Finished building: ../main.c'
+' '
+'Building file: ../vmodcam_cfg.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"vmodcam_cfg.d" -MT"vmodcam_cfg.d" -o "vmodcam_cfg.o" "../vmodcam_cfg.c"
+../vmodcam_cfg.c: In function 'CamIicCfg':
+../vmodcam_cfg.c:102:2: warning: implicit declaration of function 'CamIicSetupPLL' [-Wimplicit-function-declaration]
+../vmodcam_cfg.c: In function 'CamIicSingleRead':
+../vmodcam_cfg.c:334:6: warning: unused variable 'lCamIicReadHeader' [-Wunused-variable]
+../vmodcam_cfg.c: In function 'CamIicSingleWrite':
+../vmodcam_cfg.c:392:3: warning: 'return' with no value, in function returning non-void [-Wreturn-type]
+../vmodcam_cfg.c:388:6: warning: unused variable 'cWriteBytes' [-Wunused-variable]
+../vmodcam_cfg.c:387:6: warning: unused variable 'lCamIicRegData' [-Wunused-variable]
+../vmodcam_cfg.c: In function 'ClearScreen':
+../vmodcam_cfg.c:475:2: warning: 'return' with a value, in function returning void [enabled by default]
+../vmodcam_cfg.c: In function 'CamIicInit':
+../vmodcam_cfg.c:306:1: warning: control reaches end of non-void function [-Wreturn-type]
+../vmodcam_cfg.c: In function 'CamIicPowerUp':
+../vmodcam_cfg.c:168:1: warning: control reaches end of non-void function [-Wreturn-type]
+../vmodcam_cfg.c: In function 'CamIicSetupPLL':
+../vmodcam_cfg.c:140:1: warning: control reaches end of non-void function [-Wreturn-type]
+'Finished building: ../vmodcam_cfg.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21597	    280	   2080	  23957	   5d95	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+13:38:08 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21601	    280	   2087	  23968	   5da0	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+13:38:13 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21601	    280	   2087	  23968	   5da0	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+13:45:07 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c: In function 'img_calc_dots':
+../main.c:184:6: warning: statement with no effect [-Wunused-value]
+../main.c:185:5: error: expected ';' before 'if'
+../main.c:154:45: warning: variable 'dots' set but not used [-Wunused-but-set-variable]
+../main.c:154:12: warning: unused variable 'j' [-Wunused-variable]
+../main.c: At top level:
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+make: *** [main.o] Error 1
+13:50:40 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21609	    280	   2087	  23976	   5da8	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+13:56:38 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21609	    280	   2087	  23976	   5da8	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+14:03:39 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+../main.c: In function 'main':
+../main.c:246:3: warning: implicit declaration of function 'Delay' [-Wimplicit-function-declaration]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21625	    280	   2087	  23992	   5db8	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+14:10:48 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+../main.c: In function 'main':
+../main.c:247:3: warning: implicit declaration of function 'Delay' [-Wimplicit-function-declaration]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21653	    280	   2080	  24013	   5dcd	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+14:11:19 **** Incremental Build of configuration Debug for project Test ****
+make all 
+'Building file: ../main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -I"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\include" -c -fmessage-length=0 -I../../standalone_bsp_0/microblaze_0/include -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+../main.c:199:6: warning: return type of 'main' is not 'int' [-Wmain]
+../main.c: In function 'main':
+../main.c:247:3: warning: implicit declaration of function 'Delay' [-Wimplicit-function-declaration]
+'Finished building: ../main.c'
+' '
+'Building target: Test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -L"C:\Users\CS152B\Documents\new\proj\SDK\SDK_Export\workspace\standalone_bsp_0\microblaze_0\lib" -Wl,-T -Wl,../link.ld -L../../standalone_bsp_0/microblaze_0/lib -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.50.b -mno-xl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Test.elf"  ./cam_ctrl.o ./main.o ./vmodcam_cfg.o   
+'Finished building target: Test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size Test.elf  |tee "Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21653	    280	   2080	  24013	   5dcd	Test.elf
+'Finished building: Test.elf.size'
+' '
+'Invoking: Xilinx ELF Check'
+elfcheck Test.elf -hw ../../proj_hw_platform/system.xml -pe microblaze_0  |tee "Test.elf.elfcheck"
+elfcheck
+Xilinx EDK 2013.2 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../proj_hw_platform/system.xml -pe microblaze_0
+Test.elf 
+
+ELF file	: Test.elf
+elfcheck passed.
+'Finished building: Test.elf.elfcheck'
+' '
+14:17:01 **** Auto Build of project standalone_bsp_0 ****
+make -k all 
+'Finished building libraries'
+14:17:06 **** Incremental Build of configuration Debug for project Test ****
+make all 
+make: Nothing to be done for `all'.

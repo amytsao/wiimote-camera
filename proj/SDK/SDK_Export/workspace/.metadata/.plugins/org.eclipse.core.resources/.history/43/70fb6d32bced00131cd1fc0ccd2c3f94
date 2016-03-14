@@ -1,0 +1,249 @@
+#include <stdio.h>
+#include <math.h>
+#include <xio.h>
+
+#include "xparameters.h"
+#include "cam_ctrl_header.h"
+#include "vmodcam_header.h"
+
+
+#define blDvmaCR		0x00000000 // Control Reg Offset
+#define blDvmaFWR		0x00000004 // Frame Width Reg Offset
+#define blDvmaFHR		0x00000008 // Frame Height Reg Offset
+#define blDvmaFBAR	0x0000000c // Frame Base Addr Reg Offset
+#define blDvmaFLSR	0x00000010 // Frame Line Stride Reg Offeset
+#define blDvmaHSR		0x00000014 // H Sync Reg Offset
+#define blDvmaHBPR	0x00000018 // H Back Porch Reg Offset
+#define blDvmaHFPR	0x0000001c // H Front Porch Reg Offset
+#define blDvmaHTR		0x00000020 // H Total Reg Offset
+#define blDvmaVSR		0x00000024 // V Sync Reg Offset
+#define blDvmaVBPR	0x00000028 // V Back Porch Reg Offset
+#define blDvmaVFPR	0x0000002c // V Front Porch Reg Offset
+#define blDvmaVTR		0x00000030 // V Total Reg Offset
+
+
+#define IMG_WIDTH	1280
+#define IMG_HEIGHT	1024
+#define IMG_DIVIDE	4
+
+#define STEP_LEN        2
+#define SEARCH_RADIUS   8
+#define MAX_DOTS        16
+
+// in inches
+#define DOT_DISTANCE    2
+#define SCREEN_WIDTH    12
+#define SCREEN_HEIGHT   9
+
+inline unsigned char minb(unsigned char a, unsigned char b)
+{
+    return(a < b ? a : b);
+}
+inline unsigned char maxb(unsigned char a, unsigned char b)
+{
+    return(a > b ? a : b);
+}
+
+typedef struct _img_context {
+    unsigned num_pts;
+    unsigned long x_sum, y_sum;
+    unsigned long long xy_sum, x2_sum;
+    double x0, y0, dx, dy, y_int;
+
+    unsigned num_dots, dots[4];
+} img_context;
+
+unsigned char img_get_intensity(unsigned x, unsigned y)
+{
+    unsigned char intensity, r, g, b, max, min;
+    unsigned color;
+    int h;
+
+	// optimized RGB -> HSV conversion since we only need a few parts of the info
+	color = XIo_In16(XPAR_DDR2_SDRAM_MPMC_BASEADDR + 2 * (y * 2560 + x));
+	r = (color >> 4) 	& 0xF0;
+	g = color 			& 0xF0;
+	b = (color << 4) 	& 0xF0;
+	max = maxb(maxb(r, g), b);
+	min = minb(minb(r, g), b);
+	intensity = max - min;
+	// change if color is different
+	if(intensity > 60 && r == max)
+	{
+		// change if color is different
+		h = 60 * (g - b) / intensity;
+		if(-30 <= h && h <= 30)
+			return(intensity);
+	}
+	return(0);
+}
+
+void img_get_intensities(img_context *ctx)
+{
+    register unsigned x, y;
+
+    ctx->num_pts = 0;
+    ctx->x_sum = ctx->y_sum = ctx->xy_sum = ctx->x2_sum = 0;
+    for(y = 0; y < IMG_HEIGHT; y += IMG_DIVIDE)
+    {
+        for(x = 0; x < IMG_WIDTH; x += IMG_DIVIDE)
+        {
+            if(img_get_intensity(x, y))
+            {
+				//ctx->intensities[y * IMG_WIDTH + x] = intensity;
+				ctx->x_sum += x;
+				ctx->y_sum += y;
+				ctx->xy_sum += x * y;
+				ctx->x2_sum += x * x;
+				ctx->num_pts++;
+            }
+        }
+    }
+    xil_printf("#pts, x, y, xy, x2: %d, %d, %d, %08x%08x, %08x%08x\r\n", ctx->num_pts, (int)ctx->x_sum, (int)ctx->y_sum, ctx->xy_sum>>16, ctx->xy_sum, ctx->x2_sum>>16, ctx->x2_sum);
+}
+
+void img_calc_line(img_context *ctx)
+{
+    if(ctx->num_pts == 0)
+        return;
+
+    double len, dx, dy;
+    dx = ctx->x2_sum - (double)ctx->x_sum * ctx->x_sum / ctx->num_pts;
+    dy = ctx->xy_sum - (double)ctx->x_sum * ctx->y_sum / ctx->num_pts;
+    len = sqrt(dx * dx + dy * dy);
+    if(dx < 0)
+        len = -len;
+
+    ctx->dx = dx / len * STEP_LEN;
+    ctx->dy = dy / len * STEP_LEN;
+    ctx->y_int = (ctx->y_sum - dy / dx * ctx->x_sum) / ctx->num_pts;
+    xil_printf("dx, dy, y_int: %d, %d, %d\r\n", (int)(ctx->dx * 1000), (int)(ctx->dy * 1000), (int)(ctx->y_int * 1000));
+}
+
+void img_calc_initxy(img_context *ctx)
+{
+    if(ctx->num_pts == 0)
+        return;
+
+    if(ctx->y_int < 0)
+    {
+        ctx->x0 = -ctx->y_int * ctx->dx / ctx->dy;
+        ctx->y0 = 0;
+    }
+    else if(ctx->y_int < IMG_HEIGHT)
+    {
+        ctx->x0 = 0;
+        ctx->y0 = ctx->y_int;
+    }
+    else
+    {
+        ctx->x0 = (IMG_HEIGHT - 1 - ctx->y_int) * ctx->dx / ctx->dy;
+        ctx->y0 = IMG_HEIGHT - 1;
+    }
+    xil_printf("x0, y0: %d, %d\r\n", (int)(ctx->x0 * 1000), (int)(ctx->y0 * 1000));
+}
+
+void img_calc_dots(img_context *ctx)
+{
+    if(ctx->num_pts == 0)
+        return;
+
+    register int r;
+    double fx, fy, rx, ry;
+    unsigned I, dots_index;
+    int i, j, interval_start, interval_end, dots[MAX_DOTS];
+
+    interval_start = -1;
+    interval_end = -1;
+    dots_index = 0;
+    for(i = 0,  fx = ctx->x0,       fy = ctx->y0;
+                fx < IMG_WIDTH &&   fy >= 0 && fy < IMG_HEIGHT;
+        i++,    fx += ctx->dx,      fy += ctx->dy)
+    {
+        I = 0;
+        for(r = -SEARCH_RADIUS; r <= SEARCH_RADIUS; r++)
+        {
+            rx = fx - r * ctx->dy;
+            ry = fy + r * ctx->dx;
+            if(rx >= 0 && rx < IMG_WIDTH && ry >= 0 && ry < IMG_HEIGHT)
+                I += img_get_intensity((unsigned)rx, (unsigned)ry);
+        }
+        if(I > 0)
+        {
+            if(interval_start == -1)
+                interval_start = i;
+            interval_end = i;
+        }
+        else if(interval_start != -1 && interval_end < i - 10)
+        {
+            xil_printf("dot[%d]: %d\r\n", (int)dots_index, (int)((interval_start + interval_end) / 2));
+            if(dots_index < MAX_DOTS)
+                dots[dots_index++] = (interval_start + interval_end) / 2;
+            interval_start = -1;
+        }
+    }0
+    if(dots_index < 4)
+    {
+        ctx->num_dots = dots_index;
+        i = 0;
+    }
+    else
+    {
+        ctx->num_dots = 4;
+        i = (dots_index - 4) / 2;
+    }
+    for(j = 0; j < ctx->num_dots; j++)
+        ctx->dots[j] = dots[i + j];
+}
+
+void main()
+{
+	u32 lDvmaBaseAddress = XPAR_DVMA_0_BASEADDR;
+	int posX, posY;
+	img_context ctx;
+	xil_printf("pt 1\r\n");
+
+	XIo_Out32(lDvmaBaseAddress + blDvmaHSR, 40); // hsync
+	XIo_Out32(lDvmaBaseAddress + blDvmaHBPR, 260); // hbpr
+	XIo_Out32(lDvmaBaseAddress + blDvmaHFPR, 1540); // hfpr
+	XIo_Out32(lDvmaBaseAddress + blDvmaHTR, 1650); // htr
+	XIo_Out32(lDvmaBaseAddress + blDvmaVSR, 5); // vsync
+	XIo_Out32(lDvmaBaseAddress + blDvmaVBPR, 25); // vbpr
+	XIo_Out32(lDvmaBaseAddress + blDvmaVFPR, 745); // vfpr
+	XIo_Out32(lDvmaBaseAddress + blDvmaVTR, 750); // vtr
+
+	xil_printf("pt 2\r\n");
+		
+	XIo_Out32(lDvmaBaseAddress + blDvmaFWR, 0x00000500); // frame width
+	XIo_Out32(lDvmaBaseAddress + blDvmaFHR, 0x000002D0); // frame height
+	XIo_Out32(lDvmaBaseAddress + blDvmaFBAR, XPAR_DDR2_SDRAM_MPMC_BASEADDR); // frame base addr
+	XIo_Out32(lDvmaBaseAddress + blDvmaFLSR, 0x00000A00); // frame line stride
+	XIo_Out32(lDvmaBaseAddress + blDvmaCR, 0x00000003); // dvma enable, dfl enable
+
+	xil_printf("pt 3\r\n");
+
+	// Draws a gradient on the screen
+	for(posY = 0; posY<720; posY++) {
+		for(posX = 0; posX<2560; posX++) {
+			XIo_Out16(XPAR_DDR2_SDRAM_MPMC_BASEADDR + 2*(posY*2560+posX), (posX/80) << 4);
+		}
+	}
+
+	xil_printf("pt 4\r\n");
+
+	CamIicCfg(XPAR_CAM_IIC_0_BASEADDR, 0);
+	xil_printf("pt 4.5\r\n");
+	CamCtrlInit(XPAR_CAM_CTRL_0_BASEADDR, 0, 0);
+
+	xil_printf("pt 5\r\n");
+
+	for(;;)
+	{
+		img_get_intensities(&ctx);
+		img_calc_line(&ctx);
+		img_calc_initxy(&ctx);
+		img_calc_dots(&ctx);
+	}
+
+	//xil_printf("pt 6\r\n");
+}
